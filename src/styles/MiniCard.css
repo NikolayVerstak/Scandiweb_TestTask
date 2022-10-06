@@ -1,0 +1,306 @@
+* {
+    font-family: 'Raleway', sans-serif;
+    color: black;
+}
+
+.mini-card {
+    width: 325px;
+    position: absolute;
+    top: 20px;
+    right: -29px;
+    background-color: #FFFFFF;
+}
+.space {
+    height: 30px;
+}
+
+/* Grid of Mini-basket */
+.mini-card-content {
+    max-height: 910px;
+    padding: 0 16px;
+    display: grid;
+    grid-template-rows: 58px auto 28px 107px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.mini-card-content::-webkit-scrollbar {
+    width: 0.4em;
+}
+.mini-card-content::-webkit-scrollbar-track {
+    background-color: rgba(175, 182, 179, 0.3);
+    border-radius: 100vh;
+}
+.mini-card-content::-webkit-scrollbar-thumb {
+    background-color: rgba(175, 182, 179, 0.8);
+    border-radius: 100vh;
+}
+.mini-card-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(143, 148, 141, 0.8);
+}
+
+
+.total-qty {
+    grid-row: 1;
+    padding-top: 32px;
+    font-size: 16px;
+    line-height: 26px;
+    display: flex;
+}
+
+.mini-items {
+    grid-row: 2;
+    padding: 32px 0;
+}
+
+.total-amount {
+    grid-row: 3;
+    line-height: 28px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mini-buttons {
+    grid-row: 4;
+}
+
+/* Setting of header */
+.total-qty h1 {
+    font-size: 16px;
+    font-weight: 700;
+}
+.total-qty h2 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Setting of item */
+.mini-items {
+    display: grid;
+    grid-template-rows: repeat(auto, minmax(140, auto));
+    row-gap: 40px;
+}
+.mini-item {
+    display: grid;
+    grid-template-columns: 140px 32px 121px;
+}
+.mini-item .mini-item-details {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.mini-item-name {
+    height: 52px;
+}
+.mini-item-name h2, 
+.mini-item-name p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 26px;
+    overflow-x: hidden;
+    white-space: nowrap;
+}    
+.mini-item-name a {
+    text-decoration: none;
+}
+
+/* Setting of item's price */
+.mini-item-price {
+    height: 38px;
+    padding-top: 4px;
+    padding-bottom: 8px;
+}
+.mini-item-price p {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+}
+
+/* Setting of item's name, brand */
+.mini-item-attributes {
+    display: flex;
+    flex-direction: column;
+}
+.mini-attr:not(:last-child) {
+    margin-bottom: 8px;
+}
+.mini-attr h1 {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    padding-bottom: 8px;
+}
+/* Setting of item's SIZE-CAPASITY attributes */
+.mini-attr.Size, .mini-attr.Capacity {
+    order: 1;
+}
+.mini-attr.Color {
+    order: 2;
+}
+.mini-attr.WithUSB3ports {
+    order: 3;
+}
+.mini-attr.TouchIDinkeyboard {
+    order: 4;
+}
+.size-capacity-miniItems {
+    display: flex;
+    position: relative;
+}
+.size-capacity-miniItems p {
+    font-size: 14px;
+    width: 24px;
+    height: 24px;
+    box-sizing: border-box;
+    border: 1px solid #1D1F22;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    background: #FFFFFF;
+    overflow-x: hidden;
+}
+.size-capacity-miniItems p.marked {
+    background-color: #1D1F22;
+    color: #FFFFFF;
+}
+.size-capacity-miniItems p:last-child {
+    margin-right: 0;
+}
+
+/* Setting of item's COLOR attributes */
+.color-mini-items {
+    display: flex;
+    position: relative;
+}
+.color-mini-items div {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 6px;
+}
+.color-mini-items div:last-child {
+    margin-right: 0;
+}
+.color-mini-items span {
+    width: 16px;
+    height: 16px;
+    box-sizing: border-box;
+    font-size:0;
+    cursor: pointer;
+}
+.color-mini-items .whiteColor {
+    border: 1px solid black;
+}
+.color-mini-items .marked .whiteColor {
+    border: none;
+}
+
+/* Setting of item's increase and reduce buttons */
+.mini-item  .mini-qty-buttons {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#mini-qty-buttons button {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #1D1F22;
+    background-color: white;
+    cursor: pointer;
+    padding: 0;
+
+}
+.mini-qty-buttons h1 {
+    align-self: center;
+    padding-right: 8px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.mini-qty-buttons img {
+    width: 24px;
+    height: 24px;
+    padding: 8px;
+}
+
+/* Setting of item's picture */
+.mini-item-pictures {
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+.mini-item-pictures img {
+    height: inherit;
+    width: 121px;
+    object-fit: contain;
+    cursor: default;
+}
+
+/* TOTAL */
+.total-amount h1 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.total-amount h1 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* BUTTONS */
+.mini-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mini-buttons button {
+    width: 140px;
+    height: 43px;
+    font-family: 'Raleway';
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0;
+    cursor: pointer;
+}
+.mini-buttons .view,
+.view.visible {
+    background: #FFFFFF;
+    border: 1px solid #1D1F22;
+    box-sizing: border-box;
+    visibility: visible;
+}
+.view.hidden {
+    visibility: hidden;
+}
+.mini-buttons .order {
+    background: #5ECE7B;
+    color: #FFFFFF;
+    border: none;
+}
+.mini-buttons .order:hover {
+    color: #5ECE7B;
+    border: 1px solid #5ECE7B;
+}
+
+.mini-buttons .view:hover {
+    background: #1D1F22;
+    border: 1px solid #1D1F22;
+    box-sizing: border-box;
+    color: #FFFFFF;
+}
+.view:active, 
+.order:active {
+    scale: 1.03;
+}

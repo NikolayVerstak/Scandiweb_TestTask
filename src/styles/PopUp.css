@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.popUp-product {
+    position: fixed;
+    z-index: 1;
+    padding: 8px 117px 8px 16px;
+    top: 80px;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 58px;
+    background-color: rgba(94, 206, 123, 0.7)
+}
+
+.popUp-product.hide {
+    display: none;
+}
+.popUp-product.show {
+    display: block;
+}
+
+.popUp-product h1{
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.8);
+    text-transform: uppercase;
+}
+.popUp-product h2{
+    font-size: 12px;
+    line-height: 18px;
+    color:  rgba(0, 0, 0, 0.8);
+}

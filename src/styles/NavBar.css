@@ -1,0 +1,135 @@
+* {
+    font-family: 'Raleway', sans-serif;
+}
+
+.navbar {
+    background-color: white;
+    box-sizing: border-box;
+    height: 80px;
+    width: 100%;
+    align-items: center;
+    position: fixed; 
+    top: 0; 
+    display: flex;
+    z-index: 2;
+}
+
+.navbar-buttons {
+    margin-left: 101px;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.navbar-right-icons {
+    margin-right: 91px;
+    width: 50%;
+    height: inherit;
+    display: flex;
+    justify-content: flex-end;
+} 
+
+.navbar-basket {
+    width: 40px;
+    padding-right: 10px;
+    height: inherit;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;  
+}
+
+.navbar-basket .basket-image {
+    position: relative;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 20px;
+    height: 18px;  
+}
+
+.basket-image img {
+    width: 20px;
+    height: 18px;  
+    cursor: pointer;
+}
+
+.basket-image .basket-numbers {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 8px;
+    left: 12px;
+    border-radius: 50%;
+}
+
+.basket-numbers p {
+    color: white;
+    font-size: 10px;
+}
+.basket-numbers.visible {
+    visibility: visible;
+}
+.basket-numbers.hidden {
+    visibility: hidden;
+}
+
+.navbar-currency .select {
+    display: flex;
+    align-items: center;  
+}
+
+.navbar-currency .select:focus, 
+.navbar-currency .select:hover {
+    outline: none;
+    cursor: pointer;
+}
+
+.navbar button {
+    font-style: normal;
+    align-content: center;
+    font-weight: 400;
+    padding: 28px 0 30px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: black;
+    line-height: 100%;
+    width: 86px;
+    background-color: white;
+    border: 3px solid white;
+    cursor: pointer;
+}
+
+.navbar a button.active{
+    border-bottom: 3px solid #5ECE7B;
+    color: #5ECE7B;
+    font-weight: bold;
+}
+
+.navbar button:hover {
+    background-color: rgba(94,206,123, 0.1);
+}
+
+/* Mini-basket settings */
+.navbar-basket .basket-image {
+    position: relative;
+}
+
+.basket-image .mini-card { 
+    display: none;
+}
+.basket-image .mini-card.block { 
+    display: block;
+}
+.basket-image .mini-card.temporaryBlock { 
+    display: block;
+}
+
+
+
+
+

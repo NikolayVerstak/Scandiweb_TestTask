@@ -1,0 +1,140 @@
+* {
+    font-family: 'Raleway', sans-serif;
+}
+
+.category {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 101px auto 101px;
+    grid-template-rows: 251px auto 191px;
+} 
+
+.category h1 {
+    grid-row: 1;
+    grid-column: 2;
+    display: flex;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 160%;
+    align-items: center;
+    color: #1D1F22;
+    text-transform: uppercase;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    width: 386px;
+    height: 444px;
+    cursor: pointer;
+    position: relative;
+}
+
+.category-item #outOfStock-product {
+    width: 386px;
+    height: 444px;
+    font-size: 24px;
+    line-height: 160%;
+    font-weight: 400;
+    color: #8D8F9A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    opacity: 0.5;
+    position: absolute;
+    /* cursor: pointer; */
+}
+
+.category-item #outOfStock-product:hover {
+    box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+}
+
+.category-items {
+    grid-column: 2;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(386px, auto));
+    grid-column-gap: 40px;
+    grid-row-gap: 103px;
+    justify-content: flex-start;
+}
+
+.category-items a {
+    text-decoration: none;
+}
+
+.item-card {
+    padding: 16px;
+    /* position: relative; */
+}
+
+.category-item:hover {
+    box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+}
+
+.item-card img {
+    justify-content: flex-start;
+    width: 354px;
+    height: 330px;
+    margin-bottom: 24px;
+    /* object-fit: contain; */
+}
+
+.item-basket {
+    background-color: #5ECE7B;
+    height: 52px;
+    width: 52px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 31px;
+    top: 320px;
+}
+
+.item-basket.visible {
+    visibility: visible;
+}
+.item-basket.hidden {
+    visibility: hidden;
+}
+
+.item-basket img {
+    height: 52px;
+    width: 52px;
+    margin-bottom: 0;
+    margin-right: 2px;
+    padding: 14px;
+}
+
+.item-basket:hover {
+    scale:1.1;
+}
+
+.item-basket:active {
+    scale:1;
+}
+
+.item-title p {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 160%;
+    color: #1D1F22;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.item-price p {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 160%;
+    color: #1D1F22;
+}
+

@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.orderDone.show {
+    position: fixed;
+    z-index: 3;
+    padding: 8px 16px ;
+    top: 80px;
+    left: calc((100%/2) - 246px);
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    background-color: rgba(94, 206, 123, 0.7);
+}
+
+.orderDone.hide {
+    display: none;
+}
+
+.orderDone h1, .orderDone h2 {
+    line-height: 30px;
+    color:  rgba(0, 0, 0, 0.8);
+}
+
+.orderDone h1 {
+    font-size: 18px;
+}
+
+.orderDone h2 {
+    font-size: 14px;
+    font-weight: 500;
+}

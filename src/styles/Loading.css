@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(57, 55, 72, 0.22);
+    opacity: 0.7;
+}
+
+.spinner:after {
+    content: " ";
+    width: 75px;
+    height: 75px;
+    border: 15px solid white;
+    border-top-color: #5ECE7B;
+    border-radius: 50%;
+    animation: loading 0.75s ease infinite;
+}
+
+@keyframes loading {
+    from { transform: rotate(0turn) }
+    to { transform: rotate(1turn) }
+}

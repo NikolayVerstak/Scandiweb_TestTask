@@ -1,0 +1,253 @@
+* {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.card-page {
+    display: grid;
+    margin: 80px 100px 160px 100px;
+    align-items: center;
+}
+
+/* PAGE GRID */
+.card-content {
+    display: grid;
+    grid-template-rows: 175px minmax(0, max-content) 191px;
+    max-width: 1240px;
+}
+
+.page-name {
+    grid-row: 1;
+    border-bottom: 1px solid #E5E5E5;
+    padding-top: 80px;
+    box-sizing: border-box;
+}
+
+.card-items {
+    grid-row: 2;
+    display: grid;
+    grid-auto-rows: auto;
+    word-spacing: 0;
+    box-sizing: border-box;
+}
+
+.card-total {
+    grid-row: 3;
+    display: inline-block;
+    align-self: center;
+    justify-content: flex-start;
+}
+
+/* ITEM GRID */
+.card-item {
+    display: grid;
+    grid-template-columns: 292px minmax(auto, 654px) 93px 200px;
+    padding: 24px 0;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.item-details {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item-buttons {
+    grid-column: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 24px;
+}
+
+.item-pictures {
+    grid-column: 4;
+    display: flex;
+}
+
+/* DETAILS OF ITEM SECTIONS  */
+.item-name {
+    height: 93px;
+}
+
+.item-name h2 {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 27px;
+    margin-bottom: 16px;
+    overflow-y: visible;
+}    
+
+.item-name p {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 27px;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    overflow-y: visible;
+} 
+
+.item-attributes h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    text-transform: uppercase;
+    padding-bottom: 8px;
+}
+
+.item-attributes .attr {
+    margin-top: 16px;
+}
+
+p.marked {
+    background-color: #1D1F22;
+    color: #FFFFFF;
+}
+
+div.marked {
+    border: 1px solid #5ECE7B;
+}
+
+.color-items .marked span {
+    border: none;
+}
+
+.item-price p {
+    height: 24px;
+    font-weight: 700;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.item-buttons button {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #1D1F22;
+    background-color: white;
+    cursor: pointer;
+}
+
+.item-buttons h1 {
+    align-self: center;
+    font-size: 24px;
+}
+
+.item-buttons img {
+    width: 45px;
+    height: 45px;
+    /* margin-top: 3px; */
+    padding: 15px;
+}
+
+.item-details a {
+    text-decoration: none;
+    color: black;
+} 
+
+/* ORDER OF ATTRIBUTES */
+.item-attributes {
+    display: grid;
+    grid-template-rows: auto;
+}
+.item-attributes .Size, .product-attributes .Capacity {
+    order: 1;
+}
+.item-attributes .Color {
+    order: 2;
+}
+.item-attributes .WithUSB3ports {
+    order: 3;
+}
+.item-attributes .TouchIDinkeyboard {
+    order: 4;
+}
+
+/* SECTION OF TOTAL AMOUNT */
+.card-total {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+}
+
+.order-button {
+    grid-row: 2;
+}
+
+.order-button button {
+    width: 279px;
+    height: 43px;
+    background: #5ECE7B;
+    font-style: normal;
+    font-weight: 600;
+    font-family: 'Raleway';
+    font-size: 14px;
+    line-height: 120%;
+    color:  #FFFFFF;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+
+.total-description {
+    grid-row: 1;
+    width: 279px;
+    height: 100px;
+    margin: 32px 0 16px;
+    display: grid;
+    grid-template-columns: 110px 169px;
+    font-family: 'Raleway';
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.total-description p:not(:last-child) {
+    padding-bottom: 8px;
+}
+
+.text {
+    grid-column: 1;
+    font-weight: 400;
+}
+
+.numbers {
+    grid-column: 2;
+    font-weight: 700;
+}
+
+/* IF BASKET IS EMPTY */
+.empty-basket {
+    margin: 80px 100px 160px 100px;
+    align-items: center;
+    display: block;
+    border-bottom: 1px solid #E5E5E5;
+    height: 175px;
+    box-sizing: border-box;
+    max-width: 1240px;
+}
+
+.empty-basket h1 {
+    line-height: 50px;
+    white-space: nowrap;
+    padding-top: 40px;
+    overflow: hidden; 
+}
+.empty-basket p {
+    line-height: 20px;
+    max-height: 40px;
+    overflow: hidden;
+}
+
+.ordered {
+    visibility: hidden;
+}
+
+.noProducts {
+    visibility: hidden;
+}

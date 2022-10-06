@@ -1,0 +1,40 @@
+* {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.error-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-content h1 {
+    text-align: center;
+    line-height: 60px;
+    font-size: 32px;
+}
+
+.error-content a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 0;
+    height: 72px;
+    text-decoration: none;
+}
+
+.error-content button {
+    font-size: 20px;
+    padding: 10px 20px;
+    font-weight: 500;
+    color: #FFFFFF;
+    background: #5ECE7B;
+    border: none;
+}
+
+.error-content button:hover {
+    scale: 1.03;
+}
