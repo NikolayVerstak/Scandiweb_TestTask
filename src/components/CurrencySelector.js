@@ -8,30 +8,10 @@ import arrow from '../images/arrow.png'
 
 class CurrencySelector extends React.Component {
 
-    currencies =[
-        {
-            label: "USD",
-            symbol: "$"
-        },
-        {
-            label: "GBP",
-            symbol: "£ "
-        },
-        {
-            label: "AUD",
-            symbol: "A$ "
-        },
-        {
-            label: "JPY",
-            symbol: "¥ "
-        },
-        {
-            label: "RUB",
-            symbol: "₽ "
-        }
-]
-
-    state ={ currentCurrency: this.currencies[this.props.currencyType].symbol }
+    state ={ 
+        currencies: this.props.currencies,
+        currencyType: this.props.currencyType
+    }
 
     onChangeCurrency(event) {
         this.props.currencyChange(event.target.id)
@@ -47,9 +27,6 @@ class CurrencySelector extends React.Component {
         shownField.textContent = selectedSymbol;
         arrowIcon.classList.toggle("rotate")
         optionsField.classList.toggle("hidden")
-        if(selectedSymbol !== this.state.currentCurrency) {
-            this.setState({currentCurrency: selectedSymbol})
-        }
         this.onChangeCurrency(event)
     }
 
@@ -75,7 +52,7 @@ class CurrencySelector extends React.Component {
     }
 
     render() {
-        const {currentCurrency} = this.state;
+        const {currencies, currencyType} = this.state;
 
         return(
         <div className="currency-selector-field">
@@ -83,26 +60,18 @@ class CurrencySelector extends React.Component {
             //if a user move from currency selector to miniCard, close dropdown
             onMouseLeave={(e) => this.closeDropdown(e)}>
                 <div id="selector-field" onClick={(e) => this.onHideDropdown(e)}>
-                    <p id="selector-field-symbol">{currentCurrency}</p>
+                    <p id="selector-field-symbol">{currencies[currencyType].symbol}</p>
                     <img src={arrow} alt="" id="currency-arrow-icon" />
                 </div>
                 <ul id="options-field" className="hidden" 
                     onClick={event => this.onOptionClick(event)}>
-                    <li className="currency-option">
-                        <p id="0" className="symbol-label">$ &nbsp;USD</p>
-                    </li>
-                    <li className="currency-option">
-                        <p id="1" className="symbol-label">£ &nbsp;GBP</p>
-                    </li>
-                    <li className="currency-option">
-                        <p id="2" className="symbol-label">A$ &nbsp;AUD</p>
-                    </li>
-                    <li className="currency-option">
-                        <p id="3" className="symbol-label">¥ &nbsp;JPY</p>
-                    </li>
-                    <li className="currency-option">
-                        <p id="4" className="symbol-label">₽ &nbsp;RUB</p>
-                    </li>
+                    {currencies.map( (currency, index) => {
+                        return (
+                            <li className="currency-option" key={currency.symbol}>
+                                <p id={index} className="symbol-label">{currency.symbol} &nbsp;{currency.label}</p>
+                            </li>
+                        )
+                    })}
                 </ul>
             </div> 
         </div>

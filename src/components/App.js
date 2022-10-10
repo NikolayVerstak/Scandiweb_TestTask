@@ -12,7 +12,7 @@ import Loading from "./Loading";
 import Error from "./Error";
 import OrderDone from "./OrderDone";
 
-import { ALL_CATEGORIES } from "../graphql/queries";
+import { ALL_CATEGORIES, ALL_CURRENCIES } from "../graphql/queries";
 import { endpoint, options } from './FetchData';
 var _ = require('lodash');
 
@@ -22,6 +22,7 @@ class App extends React.Component {
 
 state = { 
             categories: [], 
+            currencies: [],
             currencyType: 0,
             isLoaded: false, 
             productId: '',
@@ -33,7 +34,7 @@ state = {
     
     componentDidMount() {
         //fetch categories names to use them in URLs
-        options.body = JSON.stringify({query: ALL_CATEGORIES, variables: {} })
+        options.body = JSON.stringify([{query: ALL_CATEGORIES, variables: {} }, {query: ALL_CURRENCIES, variables: {} }])
         fetch(endpoint, options)
         .then(response => {
             if (response.status >= 500) {
@@ -43,8 +44,7 @@ state = {
             }
         })
         .then( data => 
-            this.setState({categories: data.data.categories, isLoaded: true}) )
-
+            this.setState({categories: data[0].data.categories, currencies: data[1].data.currencies, isLoaded: true}) )
         //when the page is uploaded check if there's any cache data
         if(JSON.parse(localStorage.getItem('productsToCard')) && this.state.productsToCard !== JSON.parse(localStorage.getItem('productsToCard')) ) {
             this.setState({
@@ -257,8 +257,7 @@ state = {
 
 
     render() {
-        const { categories, isLoaded, currencyType, productsToCard, numberOfProducts, popUpProduct } = this.state;
-
+        const { categories, currencies, isLoaded, currencyType, productsToCard, numberOfProducts, popUpProduct } = this.state;
         if (!isLoaded) {
             return (
             <Loading />)
@@ -270,6 +269,8 @@ state = {
                     <div>
                         <NavBar 
                             changeCurrency={(currencyFromNav) => this.onChangeCurrency(currencyFromNav)}
+                            categories={categories}
+                            currencies={currencies}
                             numberOfProducts={numberOfProducts}
                             productsToCard={productsToCard} 
                             currencyType={currencyType}
@@ -284,30 +285,21 @@ state = {
                         <OrderDone />
                     </div>
                     <Routes>
-                        <Route path='/' element={
-                            <Categories 
-                                categoryName={categories[0].name}
-                                currencyType={currencyType}
-                                productsToCard={(product) => this.addToCard(product)}
-                                numberUp={() => this.numberUp()}
-                            />
-                        }/>
-                        <Route path={`/category/${categories[1].name}`} element={
-                            <Categories 
-                                categoryName={categories[1].name || "clothes"}
-                                currencyType={currencyType}   
-                                productsToCard={(product) => this.addToCard(product)}
-                                numberUp={() => this.numberUp()}
-                            />
-                        }/>
-                        <Route path={`/category/${categories[2].name}`} element={
-                            <Categories 
-                                categoryName={categories[2].name}
-                                currencyType={currencyType} 
-                                productsToCard={(product) => this.addToCard(product)}
-                                numberUp={() => this.numberUp()}
-                            />
-                        }/>
+                        
+                        {categories.map(category => {
+                            return (
+                                <Route key={category.name} 
+                                path={category.name === "all" ? "/" : `/category/${category.name}`} element={
+                                    <Categories 
+                                        categoryName={category.name}
+                                        currencyType={currencyType}   
+                                        productsToCard={(product) => this.addToCard(product)}
+                                        numberUp={() => this.numberUp()}
+                                    />}
+                                />
+                            )
+                        })}
+
                         <Route path='/product/:id' element={
                             <Product currencyType={currencyType} 
                                 productsToCard={(product) => this.addToCard(product)}
@@ -335,3 +327,4 @@ state = {
 };
 
 export default App;
+

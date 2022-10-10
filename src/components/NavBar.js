@@ -31,19 +31,19 @@ class NavBar extends React.Component {
         return(
             <div className="navbar" onClick={() => this.props.showViewButton()}>
                 <div className="navbar-buttons">
-                    <Link to="/"> 
-                        <button>all</button>
-                    </Link>
-                    <Link to="/category/clothes">
-                        <button>clothes</button>
-                    </Link>
-                    <Link to="/category/tech">
-                        <button>tech</button>
-                    </Link>
+                    {this.props.categories.map(category => {
+                        return (
+                            <Link key={category.name} 
+                            to={category.name === "all" ? "/" : `/category/${category.name}`}> 
+                                <button>{category.name}</button>
+                            </Link>
+                        )
+                    })}
                 </div>
                 <div className="navbar-right-icons">
                     <div className="navbar-currency">
                         <CurrencySelector 
+                            currencies={this.props.currencies}
                             currencyChange={(currencyFromSelector) => this.onChangeCurrency(currencyFromSelector)}  
                             currencyType={this.props.currencyType}
                         />

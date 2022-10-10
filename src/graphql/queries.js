@@ -68,3 +68,11 @@ query Categories {
         name
     }
 }`;
+
+export const ALL_CURRENCIES = `
+query Currencies {
+    currencies {
+        label
+        symbol
+    }
+}`
