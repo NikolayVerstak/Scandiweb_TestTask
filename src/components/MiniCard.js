@@ -35,6 +35,7 @@ class MiniCard extends React.Component {
         }
     }
 
+
     render() {
         const {products} = this.state;
         
@@ -60,7 +61,9 @@ class MiniCard extends React.Component {
             return(
                 <div className="mini-card">
                     <div className="space"></div>
-                    <div className="mini-card-content">
+                    <div className="mini-card-content"
+                    onMouseEnter={(e) => this.props.greyPage(e)}
+                    onMouseLeave={() => this.props.removeGreyPage()}>
                         <div className="total-qty">
                             <h1>My Bag,&nbsp;</h1>
                             <h2> {totalQty === 1 ? "1 item" : `${totalQty} items`}</h2>
@@ -145,7 +148,7 @@ class MiniCard extends React.Component {
                         <div className="mini-buttons">
                             <Link to='/card'>
                                 <button className="view visible">
-                                    VIEW BAG
+                                    VIEW BAG 
                                 </button>
                             </Link>
                             <button className="order" onClick={() => this.props.orderClick()}>

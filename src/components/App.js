@@ -262,7 +262,6 @@ state = {
             return (
             <Loading />)
         } else {
-
         return (
             <div>
                 <BrowserRouter>
@@ -303,8 +302,8 @@ state = {
                         <Route path='/product/:id' element={
                             <Product currencyType={currencyType} 
                                 productsToCard={(product) => this.addToCard(product)}
-                                numberUp={() => this.numberUp()}
                                 showViewButton={() => this.showViewButton()}
+                                numberUp={() => this.numberUp()}
                             />
                         }/>
                         <Route path='/card' element={

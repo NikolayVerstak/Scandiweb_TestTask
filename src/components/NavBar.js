@@ -26,6 +26,15 @@ class NavBar extends React.Component {
         }
     }
 
+    showHideMiniCard() {
+        if(this.props.productsToCard.length !== 0) {
+            const miniBasket = document.querySelector('.mini-card')
+            const greyPage = document.querySelector('.background')
+            miniBasket.classList.toggle("block")
+            greyPage.classList.toggle("inFront")
+        }
+    }
+
     render() {
 
         return(
@@ -48,13 +57,9 @@ class NavBar extends React.Component {
                             currencyType={this.props.currencyType}
                         />
                     </div>
-                    <div className="navbar-basket" 
-                        onMouseEnter={(e) => this.props.greyPage(e)}
-                        onMouseLeave={() => this.removeGreyPage()}>
+                    <div className="navbar-basket" onMouseLeave={() => this.removeGreyPage()}>
                         <div className="basket-image">
-                            <Link to="/card">
-                                <img src={basket} alt="basket" />
-                            </Link>
+                                <img src={basket} alt="basket" onClick={() => this.showHideMiniCard()}/>
                             <div className={this.props.numberOfProducts > 0 ? 'basket-numbers visible' : 'basket-numbers hidden'}>
                                 <p>{this.props.numberOfProducts}</p>
                             </div> 
@@ -64,6 +69,8 @@ class NavBar extends React.Component {
                                 increaseQty={(e) => this.props.increaseQty(e)}
                                 reduceQty={(e) => this.props.reduceQty(e)}
                                 orderClick={() => this.props.orderClick()}
+                                greyPage={(e) => this.props.greyPage(e)}
+                                removeGreyPage={() => this.removeGreyPage()}
                             />
                         </div>
                     </div>
