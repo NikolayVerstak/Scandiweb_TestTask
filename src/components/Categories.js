@@ -7,7 +7,7 @@ import '../styles/Categories.css';
 import Loading from "./Loading";
 import { SELECTED_CATEGORY} from "../graphql/queries";
 import { endpoint, options } from './FetchData';
-import basket from '../images/basket_icon_white.png'
+import basket from '../images/basket_icon_white.svg'
 
 
 

@@ -20,7 +20,7 @@
 
 #selector-field {
     font-size: 18px;
-    padding-right: 8px;
+    padding-right: 12px;
     box-sizing: border-box;
     line-height: 160%;
     display: flex;
@@ -30,9 +30,7 @@
 }
 
 #selector-field img {
-    width: 7px;
-    height: 4px;
-    margin-left: 9px;
+    margin-left: 10px;
 }
 
 .rotate {

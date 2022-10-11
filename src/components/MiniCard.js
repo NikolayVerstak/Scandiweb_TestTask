@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import '../styles/MiniCard.css';
 import '../styles/fonts.css';
 
-import minus from '../images/minus.png'
-import plus from '../images/plus.png'
+import minus from '../images/minus.svg'
+import plus from '../images/plus.svg'
 
 
 

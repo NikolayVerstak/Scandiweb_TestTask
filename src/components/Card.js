@@ -5,8 +5,8 @@ import '../styles/Card.css'
 import '../styles/fonts.css'
 
 import Carousel from "./Carousel";
-import plus from '../images/plus.png'
-import minus from '../images/minus.png'
+import plus from '../images/plus.svg'
+import minus from '../images/minus.svg'
 
 
 

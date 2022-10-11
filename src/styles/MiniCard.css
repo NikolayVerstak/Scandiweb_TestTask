@@ -6,8 +6,8 @@
 .mini-card {
     width: 325px;
     position: absolute;
-    top: 20px;
-    right: -29px;
+    top: 24px;
+    right: -24px;
     background-color: #FFFFFF;
 }
 .space {
@@ -216,7 +216,7 @@
     background-color: white;
     cursor: pointer;
     padding: 0;
-
+    overflow: hidden;
 }
 .mini-qty-buttons h1 {
     align-self: center;
@@ -227,7 +227,7 @@
 .mini-qty-buttons img {
     width: 24px;
     height: 24px;
-    padding: 8px;
+    padding: 0;
 }
 
 /* Setting of item's picture */

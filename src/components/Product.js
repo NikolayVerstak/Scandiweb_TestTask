@@ -7,7 +7,7 @@ import '../styles/fonts.css'
 import Loading from "./Loading";
 import { endpoint, options } from './FetchData';
 import { SELECTED_PRODUCT} from "../graphql/queries";
-import arrow from '../images/arrowDescription.png'
+import arrow from '../images/arrowDescription.svg'
 
 class Product extends React.Component {
 

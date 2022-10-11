@@ -127,9 +127,11 @@ div.marked {
 .item-buttons button {
     width: 45px;
     height: 45px;
+    box-sizing: border-box;
     border: 1px solid #1D1F22;
     background-color: white;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .item-buttons h1 {
@@ -140,8 +142,6 @@ div.marked {
 .item-buttons img {
     width: 45px;
     height: 45px;
-    /* margin-top: 3px; */
-    padding: 15px;
 }
 
 .item-details a {

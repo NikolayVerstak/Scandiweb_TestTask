@@ -6,7 +6,7 @@ import '../styles/NavBar.css'
 
 import CurrencySelector from "./CurrencySelector";
 import MiniCard from "./MiniCard";
-import basket from '../images/basket_icon.png'
+import basket from '../images/basket_icon.svg'
 
 
 class NavBar extends React.Component {

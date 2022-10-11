@@ -1,6 +1,6 @@
 import React from "react";
 
-import Arrow from '../images/side-arrow.png'
+import Arrow from '../images/side-arrow.svg'
 import '../styles/Carousel.css'
 
 

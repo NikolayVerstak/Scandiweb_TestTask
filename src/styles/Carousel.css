@@ -46,15 +46,6 @@
     background-color: rgba(0, 0, 0);
 }
 
-.btn img {
-    height: 7px;
-    width: 13px;
-}
-
-.next-pic img {
-    transform: rotate(-90deg);
-}
-
 .prev-pic img {
-    transform: rotate(90deg);
+    transform: rotate(180deg);
 }

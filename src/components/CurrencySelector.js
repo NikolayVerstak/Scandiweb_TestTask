@@ -2,7 +2,7 @@ import React from "react";
 
 import '../styles/fonts.css'
 import '../styles/CurrencySelector.css';
-import arrow from '../images/arrow.png'
+import arrow from '../images/arrow.svg'
 
 
 
