@@ -6,7 +6,7 @@ import '../styles/App.css'
 import NavBar from "./NavBar";
 import Categories from "./Categories";
 import Product from './Product';
-import Card from "./Card";
+import Cart from "./Cart";
 import PopUp from "./PopUp";
 import Loading from "./Loading";
 import Error from "./Error";
@@ -26,9 +26,9 @@ state = {
             currencyType: 0,
             isLoaded: false, 
             productId: '',
-            productsToCard: [],
+            productsToCart: [],
             numberOfProducts: 0,
-            orderInCard: 0,
+            orderInCart: 0,
             popUpProduct: {}
     }
     
@@ -46,10 +46,10 @@ state = {
         .then( data => 
             this.setState({categories: data[0].data.categories, currencies: data[1].data.currencies, isLoaded: true}) )
         //when the page is uploaded check if there's any cache data
-        if(JSON.parse(localStorage.getItem('productsToCard')) && this.state.productsToCard !== JSON.parse(localStorage.getItem('productsToCard')) ) {
+        if(JSON.parse(localStorage.getItem('productsToCart')) && this.state.productsToCart !== JSON.parse(localStorage.getItem('productsToCart')) ) {
             this.setState({
-                productsToCard: JSON.parse(localStorage.getItem('productsToCard')), 
-                orderInCard: JSON.parse(localStorage.getItem('orderInCard')) + 1, 
+                productsToCart: JSON.parse(localStorage.getItem('productsToCart')), 
+                orderInCart: JSON.parse(localStorage.getItem('orderInCart')) + 1, 
                 numberOfProducts: JSON.parse(localStorage.getItem('numberOfProducts'))
             })
         }
@@ -67,11 +67,11 @@ state = {
     }
     
     //newProduct comes from GetCategories.js or Product.js
-    addToCard(newProduct) {
-        const productsList = this.state.productsToCard
-        const order = this.state.orderInCard
+    addToCart(newProduct) {
+        const productsList = this.state.productsToCart
+        const order = this.state.orderInCart
         const productExist = productsList.find( item => item.id === newProduct.id)
-        //the first chech if there is the same product in the card
+        //the first chech if there is the same product in the cart
         if(productExist) {
             const sameId = productsList.filter(item => item.id === newProduct.id)
             //seach the product by selected attributes
@@ -80,40 +80,40 @@ state = {
             if(sameAttrs.length === 1) {
                 sameAttrs.forEach( sameProduct => {
                     this.setState({...sameProduct, "qty": ++sameProduct.qty })
-                    localStorage.setItem('productsToCard', JSON.stringify(productsList))
+                    localStorage.setItem('productsToCart', JSON.stringify(productsList))
                 })
             //if there is no equality, we add a new item
             } else {
-                //add order property to understand in Card component whose prodyct's qty we reduce of increase
+                //add order property to understand in Cart component whose prodyct's qty we reduce of increase
                 const newProductsList = [...productsList, {...newProduct, "qty": 1, "order": order + 1} ]
-                this.setState({productsToCard: newProductsList, orderInCard: order + 1})
-                localStorage.setItem('productsToCard', JSON.stringify(newProductsList))
-                localStorage.setItem('orderInCard', JSON.stringify(this.state.orderInCard))
+                this.setState({productsToCart: newProductsList, orderInCart: order + 1})
+                localStorage.setItem('productsToCart', JSON.stringify(newProductsList))
+                localStorage.setItem('orderInCart', JSON.stringify(this.state.orderInCart))
             }
-        } else { //if the same product doesn't exist in the card
+        } else { //if the same product doesn't exist in the cart
             const newProductsList = [...productsList, {...newProduct, "qty": 1, "order": order + 1} ]
-            this.setState({productsToCard: newProductsList, orderInCard: order + 1 })
-            localStorage.setItem('productsToCard', JSON.stringify(newProductsList))
-            localStorage.setItem('orderInCard', JSON.stringify(this.state.orderInCard))
+            this.setState({productsToCart: newProductsList, orderInCart: order + 1 })
+            localStorage.setItem('productsToCart', JSON.stringify(newProductsList))
+            localStorage.setItem('orderInCart', JSON.stringify(this.state.orderInCart))
         }
         this.setState({popUpProduct: newProduct})
         this.showPopUp() //show notification ob the screen
     }
 
     increaseQty(e) {
-        const productsList = this.state.productsToCard
+        const productsList = this.state.productsToCart
         const order = parseInt(e.target.alt) //we save product order number inside image alt 
         const product = productsList.filter( product => product.order === order)
         const updatedProduct = product[0]
 
         this.setState({...updatedProduct, "qty": ++updatedProduct.qty })
-        localStorage.setItem('productsToCard', JSON.stringify(productsList))
+        localStorage.setItem('productsToCart', JSON.stringify(productsList))
         this.numberUp() //increase the nubmer near the basket icon
     }
 
 
     reduceQty(e) {
-        const productsList = this.state.productsToCard
+        const productsList = this.state.productsToCart
         const order = parseInt(e.target.alt) //we save product order number inside image alt 
         const product = productsList.filter( product => product.order === order)
         const updatedProduct = product[0] 
@@ -124,7 +124,7 @@ state = {
                     //remove that product from list
                     const newProductsList = productsList.splice(i, 1)
                     this.setState({productsList: newProductsList})
-                    localStorage.setItem('productsToCard', JSON.stringify(productsList))
+                    localStorage.setItem('productsToCart', JSON.stringify(productsList))
                     //reduce total qty near basket icon by one
                     this.numberDown();
                     break;
@@ -133,7 +133,7 @@ state = {
         //if products has more that one piece, we minus one
         } else {
             this.setState({...updatedProduct, "qty": --updatedProduct.qty })
-            localStorage.setItem('productsToCard', JSON.stringify(productsList));
+            localStorage.setItem('productsToCart', JSON.stringify(productsList));
             //reduce total qty near basket icon by one
             this.numberDown();
         }
@@ -143,17 +143,17 @@ state = {
     //to prevent the closing of miniBasket at once
     miniBasketDelay(e) {
         // if miniBasket is opened and user remove last element in a list, we don't close it immediate
-        if(e.target.id && parseInt(e.target.id) === this.state.productsToCard.length) {
-            const miniBasket = document.querySelector('.mini-card')
+        if(e.target.id && parseInt(e.target.id) === this.state.productsToCart.length) {
+            const miniBasket = document.querySelector('.mini-cart')
             const greyPage = document.querySelector('div.inFront')
             const height = miniBasket.clientHeight
             //if items overflow miniBasket height don't make a delay
-            if(height > 910) {
+            if(height > 800) {
                 miniBasket.classList.add("block")
                 greyPage.classList.add("inFront")
             }
             //check if cursor is still ouside of miniBasket and items don't overflow miniBasket height
-            if(height <= 910 && greyPage && miniBasket) {
+            if(height <= 800 && greyPage && miniBasket) {
                 miniBasket.classList.replace("block", "temporaryBlock")
                 greyPage.classList.replace("inFront", "temporaryInFront")
                 //create a delay for 1,5s
@@ -161,7 +161,7 @@ state = {
                     miniBasket.classList.remove("temporaryBlock")
                     greyPage.classList.remove("temporaryInFront")
                     //if user didn't move mouse to miniBasket, we remove grey background
-                    if(greyPage && miniBasket.classList.value !== "mini-card block") {
+                    if(greyPage && miniBasket.classList.value !== "mini-cart block") {
                         greyPage.classList.remove("inFront")
                     }
                 }, 1500) 
@@ -183,7 +183,7 @@ state = {
         this.setState({numberOfProducts: newNumber})
         localStorage.setItem('numberOfProducts', JSON.stringify(newNumber))
         //if user remove last product from miniBasket, close miniBasket without delay and remove grey background 
-        if(this.state.numberOfProducts === 1 && document.querySelector('.mini-card.block')) {
+        if(this.state.numberOfProducts === 1 && document.querySelector('.mini-cart.block')) {
             this.removeGreyPage()
         }
     }
@@ -194,32 +194,32 @@ state = {
         localStorage.setItem('numberOfProducts', JSON.stringify(0))
     }
 
-    //remove all products from the card
+    //remove all products from the cart
     orderClick() {
-        const emptyBasket = this.state.productsToCard;
+        const emptyBasket = this.state.productsToCart;
         emptyBasket.splice(0, emptyBasket.length)
         const orderZero = 0
-        this.setState({productsToCard: emptyBasket, orderInCard: orderZero})
-        localStorage.setItem('productsToCard', JSON.stringify(this.state.productsToCard));
-        localStorage.setItem('orderInCard', JSON.stringify(orderZero));
+        this.setState({productsToCart: emptyBasket, orderInCart: orderZero})
+        localStorage.setItem('productsToCart', JSON.stringify(this.state.productsToCart));
+        localStorage.setItem('orderInCart', JSON.stringify(orderZero));
         this.numberZero()
         this.removeGreyPage()
         this.showOrderDone()
     }
 
-    //show button "VIEW BAG" in mini-card if user is not on the Card Page
+    //show button "VIEW BAG" in mini-cart if user is not on the Cart Page
     showViewButton() {
         const viewButton = document.querySelector('button.view.hidden')
-        if(viewButton && window.location.pathname !== "/card") {
+        if(viewButton && window.location.pathname !== "/cart") {
             viewButton.classList.replace("hidden", "visible")
         }
     }
 
     //grey background when user open miniBasket
     greyPage(e) {
-        //if any products are added to the card
-        if(this.state.productsToCard.length !== 0 && !e.target.alt) {
-            document.querySelector('.mini-card').classList.add('block')
+        //if any products are added to the cart
+        if(this.state.productsToCart.length !== 0 && !e.target.alt) {
+            document.querySelector('.mini-cart').classList.add('block')
             const background = document.querySelector('div.background')
             background.classList.add('inFront')
         }
@@ -257,7 +257,7 @@ state = {
 
 
     render() {
-        const { categories, currencies, isLoaded, currencyType, productsToCard, numberOfProducts, popUpProduct } = this.state;
+        const { categories, currencies, isLoaded, currencyType, productsToCart, numberOfProducts, popUpProduct } = this.state;
         if (!isLoaded) {
             return (
             <Loading />)
@@ -271,7 +271,7 @@ state = {
                             categories={categories}
                             currencies={currencies}
                             numberOfProducts={numberOfProducts}
-                            productsToCard={productsToCard} 
+                            productsToCart={productsToCart} 
                             currencyType={currencyType}
                             increaseQty={(e) => this.increaseQty(e)}
                             reduceQty={(e) => this.reduceQty(e)}
@@ -292,7 +292,7 @@ state = {
                                     <Categories 
                                         categoryName={category.name}
                                         currencyType={currencyType}   
-                                        productsToCard={(product) => this.addToCard(product)}
+                                        productsToCart={(product) => this.addToCart(product)}
                                         numberUp={() => this.numberUp()}
                                     />}
                                 />
@@ -301,14 +301,14 @@ state = {
 
                         <Route path='/product/:id' element={
                             <Product currencyType={currencyType} 
-                                productsToCard={(product) => this.addToCard(product)}
+                                productsToCart={(product) => this.addToCart(product)}
                                 showViewButton={() => this.showViewButton()}
                                 numberUp={() => this.numberUp()}
                             />
                         }/>
-                        <Route path='/card' element={
-                            <Card 
-                                productsToCard={productsToCard} 
+                        <Route path='/cart' element={
+                            <Cart 
+                                productsToCart={productsToCart} 
                                 currencyType={currencyType} 
                                 increaseQty={(e) => this.increaseQty(e)}
                                 reduceQty={(e) => this.reduceQty(e)}

@@ -5,7 +5,7 @@ import '../styles/fonts.css'
 import '../styles/NavBar.css'
 
 import CurrencySelector from "./CurrencySelector";
-import MiniCard from "./MiniCard";
+import MiniCart from "./MiniCart";
 import basket from '../images/basket_icon.svg'
 
 
@@ -20,15 +20,15 @@ class NavBar extends React.Component {
     }
 
     removeGreyPage() {
-        if(this.props.productsToCard.length !== 0) {
+        if(this.props.productsToCart.length !== 0) {
             this.props.removeGreyPage()
-            document.querySelector('.mini-card').classList.remove('block')
+            document.querySelector('.mini-cart').classList.remove('block')
         }
     }
 
-    showHideMiniCard() {
-        if(this.props.productsToCard.length !== 0) {
-            const miniBasket = document.querySelector('.mini-card')
+    showHideMiniCart() {
+        if(this.props.productsToCart.length !== 0) {
+            const miniBasket = document.querySelector('.mini-cart')
             const greyPage = document.querySelector('.background')
             miniBasket.classList.toggle("block")
             greyPage.classList.toggle("inFront")
@@ -59,12 +59,12 @@ class NavBar extends React.Component {
                     </div>
                     <div className="navbar-basket" onMouseLeave={() => this.removeGreyPage()}>
                         <div className="basket-image">
-                                <img src={basket} alt="basket" onClick={() => this.showHideMiniCard()}/>
+                                <img src={basket} alt="basket" onClick={() => this.showHideMiniCart()}/>
                             <div className={this.props.numberOfProducts > 0 ? 'basket-numbers visible' : 'basket-numbers hidden'}>
                                 <p>{this.props.numberOfProducts}</p>
                             </div> 
-                            <MiniCard 
-                                productsToMiniCard={this.props.productsToCard} 
+                            <MiniCart 
+                                productsToMiniCart={this.props.productsToCart} 
                                 currencyType={this.props.currencyType}
                                 increaseQty={(e) => this.props.increaseQty(e)}
                                 reduceQty={(e) => this.props.reduceQty(e)}

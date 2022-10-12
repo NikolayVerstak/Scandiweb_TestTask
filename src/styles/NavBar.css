@@ -115,13 +115,13 @@
     position: relative;
 }
 
-.basket-image .mini-card { 
+.basket-image .mini-cart { 
     display: none;
 }
-.basket-image .mini-card.block { 
+.basket-image .mini-cart.block { 
     display: block;
 }
-.basket-image .mini-card.temporaryBlock { 
+.basket-image .mini-cart.temporaryBlock { 
     display: block;
 }
 

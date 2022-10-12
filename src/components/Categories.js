@@ -67,7 +67,7 @@ class Categories extends React.Component {
         }
     }
 
-    addToCard(e) {
+    addToCart(e) {
         const id = e.target.alt;
         const { data } = this.state;
         const allProducts = data.category.products;
@@ -89,7 +89,7 @@ class Categories extends React.Component {
             })
         }
         const newProduct = {...product, selectedAttrs}
-        this.props.productsToCard(newProduct)
+        this.props.productsToCart(newProduct)
         //make active number sign near basket icon
         this.props.numberUp()   
     }
@@ -105,7 +105,7 @@ class Categories extends React.Component {
             
             return (
                 <div className="category" key={data.category.name}>
-                    <h1>CATEGORY - {data.category.name.toUpperCase()}</h1>
+                    <h1>Category - {data.category.name.charAt(0).toUpperCase()+data.category.name.slice(1)}</h1>
                     <div className="category-items">
 
                         {data.category.products.map(product => {
@@ -114,7 +114,7 @@ class Categories extends React.Component {
                             <div className="category-item" id={product.id} key={product.id}>
                                 <Link to={`/product/${product.id}`}>
                                     {product.inStock ? null : <div id="outOfStock-product">OUT OF STOCK</div> }
-                                    <div className="item-card" key={product.name} >
+                                    <div className="item-cart" key={product.name} >
                                         <img src={product.gallery[0]} alt={data.category.products.indexOf(product)}/>
                                         <div className="item-content">
                                             <div className="item-title">
@@ -127,7 +127,7 @@ class Categories extends React.Component {
                                     </div> 
                                 </Link>  
                                 <div className={product.inStock ? 'item-basket visible' : 'item-basket hidden'}
-                                onClick={(e) => this.addToCard(e)}>
+                                onClick={(e) => this.addToCart(e)}>
                                     <img src={basket} alt={product.id}/>
                                 </div>
                             </div> 

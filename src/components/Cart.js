@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import '../styles/Card.css'
-import '../styles/fonts.css'
+import '../styles/Cart.css';
+import '../styles/fonts.css';
 
 import Carousel from "./Carousel";
-import plus from '../images/plus.svg'
-import minus from '../images/minus.svg'
+import plus from '../images/plus.svg';
+import minus from '../images/minus.svg';
 
 
 
-class Card extends React.Component {
+class Cart extends React.Component {
 
     state = {
         products: [],
@@ -19,14 +19,14 @@ class Card extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ products: this.props.productsToCard})
+        this.setState({ products: this.props.productsToCart})
         //make all navigation buttons not highlighted
         this.notActiveButtons()
     }
 
     componentDidUpdate() {
-        if(this.state.products !== this.props.productsToCard) {
-            this.setState({ products: this.props.productsToCard})
+        if(this.state.products !== this.props.productsToCart) {
+            this.setState({ products: this.props.productsToCart})
         }
         this.currencyChange()
     }
@@ -80,16 +80,16 @@ class Card extends React.Component {
                 })
 
         return (
-            <div className="card-page">
-                <div className="card-content">
+            <div className="cart-page">
+                <div className="cart-content">
                     <div className="page-name">
-                        <h1>CARD</h1>
+                        <h1>CART</h1>
                     </div>
-                    <div className="card-items">
+                    <div className="cart-items">
                     {products.map(product => {
 
                         return (
-                        <div className="card-item" key = {Math.random()*1000} >
+                        <div className="cart-item" key = {Math.random()*1000} >
                             <div className="item-details">
                                     <div className="item-name">
                                         <h2>{product.brand}</h2>
@@ -154,7 +154,7 @@ class Card extends React.Component {
                     )
                     })}
                     </div>
-                    <div className="card-total">
+                    <div className="cart-total">
                         <div className="total-description">
                             <span className="text">
                                 <p className="tax-text">Tax 21%:</p>
@@ -192,4 +192,4 @@ class Card extends React.Component {
     }
 }
 
-export default Card;
+export default Cart;

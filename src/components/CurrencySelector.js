@@ -57,7 +57,7 @@ class CurrencySelector extends React.Component {
         return(
         <div className="currency-selector-field">
             <div className="selector" 
-            //if a user move from currency selector to miniCard, close dropdown
+            //if a user move from currency selector to miniCart, close dropdown
             onMouseLeave={(e) => this.closeDropdown(e)}>
                 <div id="selector-field" onClick={(e) => this.onHideDropdown(e)}>
                     <p id="selector-field-symbol">{currencies[currencyType].symbol}</p>

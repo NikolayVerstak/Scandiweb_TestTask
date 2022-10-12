@@ -11,13 +11,13 @@ Data is fetched from the GraphQL endpoint. You can find the endpoint [here](http
 * [Loading](/src/components/Loading.js) - a spinner for the process of loading data
 * [NavBar](/src/components/NavBar.js) - represents the navigation header
 * [CurrencySelector](/src/components/CurrencySelector.js) - a dropdown for changing of currency type
-* [MiniCard](/src/components/MiniCard.js) - represents the card overlay
+* [MiniCart](/src/components/MiniCart.js) - represents the cart overlay
 * [Categories](/src/components/Categories.js) - all categories with a list of products
 * [Product](/src/components/Product.js) - a product details component
-* [Card](/src/components/Card.js) - a list of products added to the card
+* [Cart](/src/components/Cart.js) - a list of products added to the cart
 * [Error](/src/components/Error.js) - the component for 404 error
-* [PopUp](/src/components/PopUp.js) - the notification of a product added to the card
-* [Carousel](/src/components/Carousel.js) - represents a slideshow for cycling through a series of pictures for each product inside the card
+* [PopUp](/src/components/PopUp.js) - the notification of a product added to the cart
+* [Carousel](/src/components/Carousel.js) - represents a slideshow for cycling through a series of pictures for each product inside the cart
 * [OrderDone](/src/components/OrderDone.js) - the notification of successful order
 
 Below is React components diagram and their connection between each other:
@@ -94,10 +94,10 @@ Uses GraphQL query to get data about a particular product:
   }
 ```
 
-### Card page
-![React Component](/src/results%20pictures/Card.png)
-### Mini-card 
-![React Component](/src/results%20pictures/MiniCard.png)
+### Cart page
+![React Component](/src/results%20pictures/Cart.png)
+### Mini-cart 
+![React Component](/src/results%20pictures/MiniCart.png)
 ## How-to launch locally
 
 In the project directory, you can run:

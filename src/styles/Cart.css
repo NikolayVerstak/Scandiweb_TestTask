@@ -4,14 +4,14 @@
     padding: 0;
 }
 
-.card-page {
+.cart-page {
     display: grid;
     margin: 80px 100px 160px 100px;
     align-items: center;
 }
 
 /* PAGE GRID */
-.card-content {
+.cart-content {
     display: grid;
     grid-template-rows: 175px minmax(0, max-content) 191px;
     max-width: 1240px;
@@ -24,7 +24,7 @@
     box-sizing: border-box;
 }
 
-.card-items {
+.cart-items {
     grid-row: 2;
     display: grid;
     grid-auto-rows: auto;
@@ -32,7 +32,7 @@
     box-sizing: border-box;
 }
 
-.card-total {
+.cart-total {
     grid-row: 3;
     display: inline-block;
     align-self: center;
@@ -40,7 +40,7 @@
 }
 
 /* ITEM GRID */
-.card-item {
+.cart-item {
     display: grid;
     grid-template-columns: 292px minmax(auto, 654px) 93px 200px;
     padding: 24px 0;
@@ -115,7 +115,7 @@ div.marked {
     border: none;
 }
 
-.item-price p {
+.item-details .item-price p {
     height: 24px;
     font-weight: 700;
     font-size: 24px;
@@ -168,7 +168,7 @@ div.marked {
 }
 
 /* SECTION OF TOTAL AMOUNT */
-.card-total {
+.cart-total {
     display: grid;
     grid-template-columns: repeat(2, auto);
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import '../styles/MiniCard.css';
+import '../styles/MiniCart.css';
 import '../styles/fonts.css';
 
 import minus from '../images/minus.svg'
@@ -9,7 +9,7 @@ import plus from '../images/plus.svg'
 
 
 
-class MiniCard extends React.Component {
+class MiniCart extends React.Component {
 
     state = {
         products: [],
@@ -17,14 +17,14 @@ class MiniCard extends React.Component {
     }
 
     componentDidMount() {
-        if(this.state.products !== this.props.productsToMiniCard) {
-            this.setState({ products: this.props.productsToMiniCard})
+        if(this.state.products !== this.props.productsToMiniCart) {
+            this.setState({ products: this.props.productsToMiniCart})
         }
     }
 
     componentDidUpdate() {
-        if(this.state.products !== this.props.productsToMiniCard) {
-            this.setState({ products: this.props.productsToMiniCard})
+        if(this.state.products !== this.props.productsToMiniCart) {
+            this.setState({ products: this.props.productsToMiniCart})
         }
         this.currencyChange()
     }
@@ -35,7 +35,7 @@ class MiniCard extends React.Component {
         }
     }
 
-
+    
     render() {
         const {products} = this.state;
         
@@ -59,9 +59,9 @@ class MiniCard extends React.Component {
             })
 
             return(
-                <div className="mini-card">
+                <div className="mini-cart">
                     <div className="space"></div>
-                    <div className="mini-card-content"
+                    <div className="mini-cart-content"
                     onMouseEnter={(e) => this.props.greyPage(e)}
                     onMouseLeave={() => this.props.removeGreyPage()}>
                         <div className="total-qty">
@@ -146,7 +146,7 @@ class MiniCard extends React.Component {
                             <p>{products[0].prices[`${currencyNumber}`].currency.symbol}{amount.toFixed(2)}</p>
                         </div>
                         <div className="mini-buttons">
-                            <Link to='/card'>
+                            <Link to='/cart'>
                                 <button className="view visible">
                                     VIEW BAG 
                                 </button>
@@ -165,4 +165,4 @@ class MiniCard extends React.Component {
     }
 }
 
-export default MiniCard;
+export default MiniCart;

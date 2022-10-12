@@ -3,7 +3,7 @@
     color: black;
 }
 
-.mini-card {
+.mini-cart {
     width: 325px;
     position: absolute;
     top: 24px;
@@ -15,26 +15,26 @@
 }
 
 /* Grid of Mini-basket */
-.mini-card-content {
-    max-height: 910px;
+.mini-cart-content {
+    max-height: 800px;
     padding: 0 16px;
     display: grid;
     grid-template-rows: 58px auto 28px 107px;
     overflow-y: auto;
     overflow-x: hidden;
 }
-.mini-card-content::-webkit-scrollbar {
+.mini-cart-content::-webkit-scrollbar {
     width: 0.4em;
 }
-.mini-card-content::-webkit-scrollbar-track {
+.mini-cart-content::-webkit-scrollbar-track {
     background-color: rgba(175, 182, 179, 0.3);
     border-radius: 100vh;
 }
-.mini-card-content::-webkit-scrollbar-thumb {
+.mini-cart-content::-webkit-scrollbar-thumb {
     background-color: rgba(175, 182, 179, 0.8);
     border-radius: 100vh;
 }
-.mini-card-content::-webkit-scrollbar-thumb:hover {
+.mini-cart-content::-webkit-scrollbar-thumb:hover {
     background-color: rgba(143, 148, 141, 0.8);
 }
 
@@ -247,14 +247,12 @@
 /* TOTAL */
 .total-amount h1 {
     font-family: 'Roboto';
-    font-style: normal;
     font-weight: 500;
     font-size: 16px;
 }
 
-.total-amount h1 {
+.total-amount p {
     font-family: 'Raleway';
-    font-style: normal;
     font-weight: 700;
     font-size: 16px;
 }

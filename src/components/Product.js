@@ -34,16 +34,16 @@ class Product extends React.Component {
         .then(data => this.setState({product: data.data.product, isLoaded: true, 
             productCategory: data.data.product.category
         }))
-        //show button "VIEW BAG" in mini-card 
+        //show button "VIEW BAG" in mini-cart 
         this.props.showViewButton()
         
     }
 
     componentDidUpdate() {
-        //if user click on product name from miniCard
-        const miniCardLinks = document.querySelectorAll('p.linkToProduct')
-        if(miniCardLinks) {
-            miniCardLinks.forEach( link => {
+        //if user click on product name from miniCart
+        const miniCartLinks = document.querySelectorAll('p.linkToProduct')
+        if(miniCartLinks) {
+            miniCartLinks.forEach( link => {
                 link.addEventListener('click', (e) => {
                     if(this.state.id !== e.target.id) {
                         options.body = JSON.stringify({query: SELECTED_PRODUCT, variables: { id: e.target.id} })
@@ -132,7 +132,7 @@ class Product extends React.Component {
         })
     }
 
-    addToCard() {
+    addToCart() {
         const markedAttrs = document.querySelectorAll('.selectedAttribute')
         const {product} = this.state;
         //make clone of state Product to edit some properties and add a new one
@@ -169,7 +169,7 @@ class Product extends React.Component {
                 }
             }
             //send this product to App.js
-            this.props.productsToCard({...newProduct, selectedAttrs})
+            this.props.productsToCart({...newProduct, selectedAttrs})
             //make active number sign near basket icon
             this.props.numberUp() 
         } else { //if user didn't chose all attributes, show warning
@@ -249,8 +249,8 @@ class Product extends React.Component {
                                 
                                 <div className="sendToBasket-button">
                                 {product.inStock === true ? 
-                                    <button onClick={() => this.addToCard()}>Add To Card</button> 
-                                    : <button className="disabled">Add To Card</button> }
+                                    <button onClick={() => this.addToCart()}>Add To Cart</button> 
+                                    : <button className="disabled">Add To Cart</button> }
                                 </div> 
                             </div>
 
